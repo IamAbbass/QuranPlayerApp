@@ -1,0 +1,37 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "zed.listen.quran"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "zed.listen.quran.mueaqly"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "zed.listen.quran.mueaqly"
+    },
+    "cordova-plugin-permission": {
+      "PACKAGE_NAME": "zed.listen.quran.mueaqly"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "zed.listen.quran.mueaqly"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "zed.listen.quran.mueaqly"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "zed.listen.quran.mueaqly"
+    },
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "zed.listen.quran.mueaqly"
+    }
+  }
+}

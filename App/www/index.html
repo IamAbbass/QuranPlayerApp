@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <title>Listen Quran</title>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <style id="after_here">
+
+        </style>
+    </head>
+    <body>
+        <div class="container para_view">
+          <h2 class="text-center app_title">Listen <span class="gold">Quran</span></h2>
+          <ul id="para_list" class="list-group">
+          </ul>
+          <div class="bottom_bar">
+            <div class="col-xs-12 no-padding">
+              <div class="progress">
+                  <div class="progress-bar progress-bar-bottom" role="progressbar" style="width:50%">
+                  </div>
+              </div>
+            </div>
+            <div class="col-xs-12 no-padding">
+              <div class="col-xs-5 no-padding">
+                <div class="bottom_control_opt btn_prev"><img src='img/prev.png' alt='' /></div>
+                <div class="bottom_control_opt bottom_play_pause"><img src='img/play.png' alt='' /></div>
+                <div class="bottom_control_opt bottom_icon_loading"><img src='img/load.gif' alt='' /></div>
+                <div class="bottom_control_opt btn_next"><img src='img/next.png' alt='' /></div>
+              </div>
+              <div class="col-xs-7 no-padding">
+                <p class="bottom_name_ar arabic_font"></p>
+                <p class="bottom_name_en english_font gold"></p>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="container player_view">
+            <h2 class="text-center tauz">
+              <span class="arabic_font">
+                بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
+              </span>
+              <div class="back_btn">
+                <img src="img/back.png" />
+              </div>
+            </h2>
+
+
+            <div class="thumb">
+              <p class="now_playing_name_en english_font gold"></p>
+              <p class="now_playing_name_ar quran_font"></p>
+              <img class="thumb_dp" src="img/bg-quran.png" alt="" />
+              <p class="audio_details">Translation Kanzul Eman with Tafseer e Khazain ul Irfan by Dawat e Islami</p>
+
+              <p class="download_offline gold"></p>
+            </div>
+
+            <div class="control">
+              <div class="hint_placeholder">
+                <p class="hint english_font"></p>
+              </div>
+
+              <form>
+                <input type="range" step="1" min="0" value="0" class="slider input_seekbar">
+                <output class="add_note english_font" for="foo" onforminput="value = foo.valueAsNumber;"><img src="img/notes.png" /></output>
+              </form>
+
+              <div class="progress">
+                  <div class="progress-bar progress-bar-inner" role="progressbar" style="width:0%">
+                  </div>
+              </div>
+
+              <div class="seekbar_mins">
+                <div class="container">
+                  <div class="col-xs-3 no-padding">
+                    <p class="played_duration seekbar_min"></p>
+                  </div>
+                  <div class="col-xs-6">
+                  </div>
+                  <div class="col-xs-3 no-padding">
+                    <p class="max_duration seekbar_min"></p>
+                  </div>
+                </div>
+              </div>
+
+              <audio id="audio_player" controls>
+                <source src="" type="audio/mpeg">
+              </audio>
+
+              <div class="container control_btns">
+                <div class="col-xs-2 low-padding">
+                  <div class="control_opt btn_replay_10"><img src='img/replay_10.png' alt='' /></div>
+                </div>
+                <div class="col-xs-2 low-padding">
+                  <div class="control_opt btn_prev"><img src='img/prev.png' alt='' /></div>
+                </div>
+                <div class="col-xs-4 low-padding">
+                  <div class="btn_play_pause play"><img src='img/play.png' alt='' /></div>
+                </div>
+                <div class="col-xs-2 low-padding">
+                  <div class="control_opt btn_next"><img src='img/next.png' alt='' /></div>
+                </div>
+                <div class="col-xs-2 low-padding">
+                  <div class="control_opt btn_forward_10"><img src='img/forward_10.png' alt='' /></div>
+                </div>
+              </div>
+
+
+
+            </div>
+
+            <div class="notes_here">
+              <p class="notes_title gold"><img src="img/notes.png" /> <span>Saved Notes</span></p>
+              <ul id="note_list" class="list-group">
+              </ul>
+            </div>
+
+          </div>
+
+        <script>
+				var chapter       = "Surah # ";
+				var base_url      = "https://zedexperts.com/api/quran_pak/surah/";
+				var arr = [
+				{
+				  "index":"١",
+				  "name_arb":"فاتِحَةُ"
+				},
+				{
+				  "index":"٢",
+				  "name_arb":"البَقَرة"
+				},
+				{
+				  "index":"٣",
+				  "name_arb":"آل عِمران"
+				},
+				{
+				  "index":"٤",
+				  "name_arb":"النِّســاء"
+				},
+				{
+				  "index":"٥",
+				  "name_arb":"المَـائِدة"
+				},
+				{
+				  "index":"٦",
+				  "name_arb":"الأنْعـام"
+				},
+				{
+				  "index":"٧",
+				  "name_arb":"الأعراف"
+				},
+				{
+				  "index":"٨",
+				  "name_arb":"الأنْفـال"
+				},
+				{
+				  "index":"٩",
+				  "name_arb":"التـَّوْبَة"
+				},
+				{
+				  "index":"١٠",
+				  "name_arb":"يُونُس"
+				},
+				{
+				  "index":"١١",
+				  "name_arb":"هُود"
+				},
+				{
+				  "index":"١٢",
+				  "name_arb":"يُوسُف"
+				},
+				{
+				  "index":"١٣",
+				  "name_arb":"الرَّعد"
+				},
+				{
+				  "index":"١٤",
+				  "name_arb":"اِبراهيم"
+				},
+				{
+				  "index":"١٥",
+				  "name_arb":"الحِجْر"
+				},
+				{
+				  "index":"١٦",
+				  "name_arb":"النًّحل"
+				},
+				{
+				  "index":"١٧",
+				  "name_arb": "بني إسرائيل"
+				},
+				{
+				  "index":"١٨",
+				  "name_arb":"الكَهْف"
+				},
+				{
+				  "index":"١٩",
+				  "name_arb":"مَريَم"
+				},
+				{
+				  "index":"٢٠",
+				  "name_arb":"طه"
+				},
+				{
+				  "index":"٢١",
+				  "name_arb":"الأنْبيآء"
+				},
+				{
+				  "index":"٢٢",
+				  "name_arb":"الحَجّ"
+				},
+				{
+				  "index":"٢٣",
+				  "name_arb":"المؤمِنون"
+				},
+				{
+				  "index":"٢٤",
+				  "name_arb":"النّور"
+				},
+				{
+				  "index":"٢٥",
+				  "name_arb":"الفُرقان"
+				},
+				{
+				  "index":"٢٦",
+				  "name_arb":"الشُّـعَراء"
+				},
+				{
+				  "index":"٢٧",
+				  "name_arb":"النَّـمْل"
+				},
+				{
+				  "index":"٢٨",
+				  "name_arb":"القَصَص"
+				},
+				{
+				  "index":"٢٩",
+				  "name_arb":"العَنْـكَبُوت"
+				},
+				{
+				  "index":"٣٠",
+				  "name_arb":"الرُّوم"
+				},
+				{
+				  "index":"٣١",
+				  "name_arb":"لُقْمان"
+				},
+				{
+				  "index":"٣٢",
+				  "name_arb":"السَّـجْدة"
+				},
+				{
+				  "index":"٣٣",
+				  "name_arb":"الأحزاب"
+				},
+				{
+				  "index":"٣٤",
+				  "name_arb":"ســَبَأ"
+				},
+				{
+				  "index":"٣٥",
+				  "name_arb":"فاطِر"
+				},
+				{
+				  "index":"٣٦",
+				  "name_arb":"يــس"
+				},
+				{
+				  "index":"٣٧",
+				  "name_arb":"الصّــافّات"
+				},
+				{
+				  "index":"٣٨",
+				  "name_arb":"ص"
+				},
+				{
+				  "index":"٣٩",
+				  "name_arb":"الزُّمَر"
+				},
+				{
+				  "index":"٤٠",
+				  "name_arb":"المُؤْمِن"
+				},
+				{
+				  "index":"٤١",
+				  "name_arb":"فُصِّلَت"
+				},
+				{
+				  "index":"٤٢",
+				  "name_arb":"الشُّوری"
+				},
+				{
+				  "index":"٤٣",
+				  "name_arb":"الزُّخْرُف"
+				},
+				{
+				  "index":"٤٤",
+				  "name_arb":"الدُّخان"
+				},
+				{
+				  "index":"٤٥",
+				  "name_arb":"الجاثِية"
+				},
+				{
+				  "index":"٤٦",
+				  "name_arb":"الأحقاف"
+				},
+				{
+				  "index":"٤٧",
+				  "name_arb":"مُحَمّد"
+				},
+				{
+				  "index":"٤٨",
+				  "name_arb":"الفَتْح"
+				},
+				{
+				  "index":"٤٩",
+				  "name_arb":"الحُجُرات"
+				},
+				{
+				  "index":"٥٠",
+				  "name_arb":"ق"
+				},
+				{
+				  "index":"٥١",
+				  "name_arb":"الذ ّارِيات"
+				},
+				{
+				  "index":"٥٢",
+				  "name_arb":"الطُّور"
+				},
+				{
+				  "index":"٥٣",
+				  "name_arb":"النَّجْم"
+				},
+				{
+				  "index":"٥٤",
+				  "name_arb":"القَمَر"
+				},
+				{
+				  "index":"٥٥",
+				  "name_arb":"الرَّحمن"
+				},
+				{
+				  "index":"٥٦",
+				  "name_arb":"الواقِعَة"
+				},
+				{
+				  "index":"٥٧",
+				  "name_arb":"الحَديد"
+				},
+				{
+				  "index":"٥٨",
+				  "name_arb":"المُجادَلة"
+				},
+				{
+				  "index":"٥٩",
+				  "name_arb":"الحَشْر"
+				},
+				{
+				  "index":"٦٠",
+				  "name_arb":"المُمتَحَنة"
+				},
+				{
+				  "index":"٦١",
+				  "name_arb":"الصَّف"
+				},
+				{
+				  "index":"٦٢",
+				  "name_arb":"الجُّمُعة"
+				},
+				{
+				  "index":"٦٣",
+				  "name_arb":"المُنافِقُون"
+				},
+				{
+				  "index":"٦٤",
+				  "name_arb":"التَّغابُن"
+				},
+				{
+				  "index":"٦٥",
+				  "name_arb":"الطَّلاق"
+				},
+				{
+				  "index":"٦٦",
+				  "name_arb":"التَّحْريم"
+				},
+				{
+				  "index":"٦٧",
+				  "name_arb":"المُلْك"
+				},
+				{
+				  "index":"٦٨",
+				  "name_arb":"القَلـََم"
+				},
+				{
+				  "index":"٦٩",
+				  "name_arb":"الحَاقّـَة"
+				},
+				{
+				  "index":"٧٠",
+				  "name_arb":"المَعارِج"
+				},
+				{
+				  "index":"٧١",
+				  "name_arb":"نُوح"
+				},
+				{
+				  "index":"٧٢",
+				  "name_arb":"الجِنّ"
+				},
+				{
+				  "index":"٧٣",
+				  "name_arb":"المُزَّمّـِل"
+				},
+				{
+				  "index":"٧٤",
+				  "name_arb":"المُدَّثــِّر"
+				},
+				{
+				  "index":"٧٥",
+				  "name_arb":"القِيامَة"
+				},
+				{
+				  "index":"٧٦",
+				  "name_arb":"الدَّهر"
+				},
+				{
+				  "index":"٧٧",
+				  "name_arb":"المُرسَلات"
+				},
+				{
+				  "index":"٧٨",
+				  "name_arb":"النـَّبأ"
+				},
+				{
+				  "index":"٧٩",
+				  "name_arb":"النـّازِعات"
+				},
+				{
+				  "index":"٨٠",
+				  "name_arb":"عَبَس"
+				},
+				{
+				  "index":"٨١",
+				  "name_arb":"التـَّكْوير"
+				},
+				{
+				  "index":"٨٢",
+				  "name_arb":"الإنفِطار"
+				},
+				{
+				  "index":"٨٣",
+				  "name_arb":"المُطـَفِّفين"
+				},
+				{
+				  "index":"٨٤",
+				  "name_arb":"الإنشِقاق"
+				},
+				{
+				  "index":"٨٥",
+				  "name_arb":"البُروج"
+				},
+				{
+				  "index":"٨٦",
+				  "name_arb":"الطّارق"
+				},
+				{
+				  "index":"٨٧",
+				  "name_arb":"الأعلی"
+				},
+				{
+				  "index":"٨٨",
+				  "name_arb":"الغاشِيَة"
+				},
+				{
+				  "index":"٨٩",
+				  "name_arb":"الفَجْر"
+				},
+				{
+				  "index":"٩٠",
+				  "name_arb":"البَـلـَد"
+				},
+				{
+				  "index":"٩١",
+				  "name_arb":"الشــَّمْس"
+				},
+				{
+				  "index":"٩٢",
+				  "name_arb":"اللـَّيل"
+				},
+				{
+				  "index":"٩٣",
+				  "name_arb":"الضُّحی"
+				},
+				{
+				  "index":"٩٤",
+				  "name_arb":"الإنشـِراح"
+				},
+				{
+				  "index":"٩٥",
+				  "name_arb":"التـِّين"
+				},
+				{
+				  "index":"٩٦",
+				  "name_arb":"العَلـَق"
+				},
+				{
+				  "index":"٩٧",
+				  "name_arb":"القـَدر"
+				},
+				{
+				  "index":"٩٨",
+				  "name_arb":"البَيِّنَة"
+				},
+				{
+				  "index":"٩٩",
+				  "name_arb":"الزِّلزال"
+				},
+				{
+				  "index":"١٠٠",
+				  "name_arb":"العـَاديات"
+				},
+				{
+				  "index":"١٠١",
+				  "name_arb":"القارِعَة"
+				},
+				{
+				  "index":"١٠٢",
+				  "name_arb":"التَكاثـُر"
+				},
+				{
+				  "index":"١٠٣",
+				  "name_arb":"العَصْر"
+				},
+				{
+				  "index":"١٠٤",
+				  "name_arb":"الهُمَزَة"
+				},
+				{
+				  "index":"١٠٩",
+				  "name_arb":"الفيل"
+				},
+				{
+				  "index":"١٠٦",
+				  "name_arb":"قـُرَيْش"
+				},
+				{
+				  "index":"١٠٧",
+				  "name_arb":"الماعُون"
+				},
+				{
+				  "index":"١٠٨",
+				  "name_arb":"الكـَوْثَر"
+				},
+				{
+				  "index":"١٠٩",
+				  "name_arb":"الكافِرون"
+				},
+				{
+				  "index":"١١٠",
+				  "name_arb":"النـَّصر"
+				},
+				{
+				  "index":"١١١",
+				  "name_arb":"تَبَّت"
+				},
+				{
+				  "index":"١١٢",
+				  "name_arb":"الإخـْلاص"
+				},
+				{
+				  "index":"١١٣",
+				  "name_arb":"الفـَلَق"
+				},
+				{
+				  "index":"١١٤",
+				  "name_arb":"النـَّاس"
+				}];
+
+
+            
+			
+          $(document).ready(function(){
+
+            $("#para_list").append('<li class="download_all list-group-item">'+
+            '<span class="para_play"><img src="img/download.png" alt="" /></span>'+
+            '<span class="para_index english_font gold">Download <span class="count_download_files">All</span> Files</span>'+
+            '<span class="download_help english_font gold">and, listen Quran when you are offline</span>'+
+            '<div class="clear"></div>'+
+            '</li>');
+
+            $.each(arr,function(key,value){
+              //console.log(value);
+              var index     = value.index;
+              var name_arb  = value.name_arb;
+              var name_eng  = value.name_eng;
+              var key       = key+1;
+
+              var listened  = +localStorage.getItem("listened_percentage_"+key);
+              //console.log(localStorage.getItem("listened_percentage_"+key));
+              //console.log(localStorage.getItem("listened_time_"+key));
+              //<span class="label label-default">Offline</span>
+              $("#para_list").append('<li id="li_'+key+'" key="'+(key)+'" class="para_li list-group-item">'+
+              '<span class="para_play"><img src="img/play.png" alt="" /></span>'+
+              '<span class="para_name arabic_font">'+name_arb+'</span>'+
+              '<span class="para_index english_font">'+key+'</span>'+
+                '<div class="progress">'+
+                  '<div key="'+(key)+'" class="progress-bar progress-bar-outer" role="progressbar" aria-valuenow="'+listened+'" aria-valuemin="0" aria-valuemax="100" style="width:'+listened+'%">'+
+                  '</div>'+
+                '</div>'+
+                '<div class="progress progress-download">'+
+                  '<div key="'+(key)+'" class="progress-bar progress-bar-download" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">'+
+                  '</div>'+
+                '</div>'+
+              '</li>');
+
+            });
+          });
+        </script>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+    </body>
+</html>
