@@ -4,6 +4,25 @@ var app = {
     },
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+
+
+
+        try{
+          window.HeadsetDetection.registerRemoteEvents(function(status) {
+              switch (status) {
+                  case 'headsetAdded':
+                      $(".handset_details").text("🎧 Headphone Connected ✔️");
+                  break;
+                  case 'headsetRemoved':
+                      $(".handset_details").text("🎧 Sounds best with headphone !");
+                  break;
+              };
+          });
+        }catch(e){
+          $(".handset_details").text("🎧 Sounds best with headphone !");
+        }
+
+
         //localStorage.clear();
         $(document).ready(function(){
 
@@ -108,8 +127,9 @@ var app = {
             var arr_index = audio_number-1;
             //console.log({arr_index});
             var thumb_title = arr[arr_index];
-            $(".now_playing_name_en, .bottom_name_en").html(chapter+" "+(global_audio));
+            $(".now_playing_name_en, .bottom_name_en").html(chapter+" "+(global_audio)+" "+thumb_title.name_eng);
             $(".now_playing_name_ar, .bottom_name_ar").html(thumb_title.name_arb);
+
 
             if(check_downloaded(audio_number) == true){
               var url = localStorage.getItem("downloaded_"+audio_number);
@@ -178,7 +198,7 @@ var app = {
                   // output in android: file:///storage/emulated/0/
                   // or
                   // var store = "cdvfile://localhost/persistent/";
-                  var fileName = "Quran_App_Data/Para/"+audio_number+".mp3";
+                  var fileName = "Quran_App_Data/Surah/"+audio_number+".mp3";
                   var fileTransfer = new FileTransfer();
                   fileTransfer.download(assetURL, store + fileName,
                   function(entry) {
@@ -194,6 +214,8 @@ var app = {
                           play_now(base_url,global_audio,arr,audio_player.currentTime,true);
                         }
                       }
+
+                      //display_download_all_button();
                    },
                   function(err) {
                       //ERROR
@@ -210,8 +232,10 @@ var app = {
                       swal({
                         icon: "warning",
                         title: "Unable to download file!",
-                        text: "Error Code "+code+": "+exception,
+                        text: "Please check your internet connection",//Error Code "+code+": "+exception,
                       });
+
+                      display_download_all_button();
                   });
                   fileTransfer.onprogress = function(result){
                      var percent =  result.loaded / result.total * 100;
@@ -327,24 +351,26 @@ var app = {
 
 
           }
-
-          //check download button
-          $(".download_all").hide();
-          for(i=1; i<=total_audio; i++){
-            if(check_downloaded(i) == false){
-              $(".download_all").fadeIn();
-              count_download_files++;
-
-              if(count_download_files == total_audio){
-                $(".count_download_files").html("All");
+          function display_download_all_button(){
+			count_download_files = 0;
+			
+            $(".download_all").hide();
+            for(i=1; i<=total_audio; i++){
+              if(check_downloaded(i) == false){
+                $(".download_all").show();
+                count_download_files++;
+                if(count_download_files == total_audio){
+                  $(".count_download_files").html("All");
+                }else{
+                  $(".count_download_files").html("Remaining "+count_download_files);
+                }
               }else{
-                $(".count_download_files").html("Remaining "+count_download_files);
+                $(".para_li[key='"+i+"']").find(".para_index").html(i+' <span class="label label-success">Offline</span>');
               }
-
-            }else{
-              $(".para_li[key='"+i+"']").find(".para_index").html(i+' <span class="label label-success">Offline</span>');
             }
           }
+          //check download button
+          display_download_all_button();
 
           height_setting();
 
@@ -649,7 +675,7 @@ var app = {
                 var top_px = ($("#li_"+global_audio).offset().top)-(($(window).height())-70)/2;
                 $('html, body').animate({
                     scrollTop: top_px
-                },250);
+                },0);
               }catch(e){
                 $(".para_view").fadeIn();
               }
@@ -821,7 +847,7 @@ var app = {
                   var top_px = ($("#li_"+global_audio).offset().top)-(($(window).height())-70)/2;
                   $('html, body').animate({
                       scrollTop: top_px
-                  },250);
+                  },0);
                 }catch(e){
                   $(".para_view").fadeIn();
                 }

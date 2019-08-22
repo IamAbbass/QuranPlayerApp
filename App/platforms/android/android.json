@@ -39,6 +39,10 @@
             {
               "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"HeadsetDetection\"><param name=\"android-package\" value=\"nl.xservices.plugins.HeadsetDetection\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -76,6 +80,10 @@
           "/manifest": [
             {
               "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\" />",
               "count": 1
             }
           ]
@@ -116,6 +124,9 @@
       "PACKAGE_NAME": "zed.listen.quran.mueaqly"
     },
     "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "zed.listen.quran.mueaqly"
+    },
+    "cordova-plugin-headsetdetection": {
       "PACKAGE_NAME": "zed.listen.quran.mueaqly"
     }
   },
@@ -381,6 +392,14 @@
       "clobbers": [
         "Connection"
       ]
+    },
+    {
+      "id": "cordova-plugin-headsetdetection.HeadsetDetection",
+      "file": "plugins/cordova-plugin-headsetdetection/www/HeadsetDetection.js",
+      "pluginId": "cordova-plugin-headsetdetection",
+      "clobbers": [
+        "window.HeadsetDetection"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -391,6 +410,7 @@
     "cordova-plugin-badge": "0.8.8",
     "cordova-plugin-local-notification": "0.9.0-beta.2",
     "cordova-plugin-permission": "0.1.0",
-    "cordova-plugin-network-information": "2.0.2"
+    "cordova-plugin-network-information": "2.0.2",
+    "cordova-plugin-headsetdetection": "3.0.0"
   }
 }

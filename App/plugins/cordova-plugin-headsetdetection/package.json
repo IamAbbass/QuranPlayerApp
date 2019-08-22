@@ -1,0 +1,60 @@
+{
+  "_from": "cordova-plugin-headsetdetection",
+  "_id": "cordova-plugin-headsetdetection@3.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-3ZqBIMfIABrnTyqbaeLPg5tdspw=",
+  "_location": "/cordova-plugin-headsetdetection",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-plugin-headsetdetection",
+    "name": "cordova-plugin-headsetdetection",
+    "escapedName": "cordova-plugin-headsetdetection",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-headsetdetection/-/cordova-plugin-headsetdetection-3.0.0.tgz",
+  "_shasum": "dd9a8120c7c8001ae74f2a9b69e2cf839b5db29c",
+  "_spec": "cordova-plugin-headsetdetection",
+  "_where": "D:\\AppDev\\QuranPlayerApp\\App",
+  "author": {
+    "name": "Eddy Verbruggen",
+    "email": "eddyverbruggen@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/EddyVerbruggen/HeadsetDetection-PhoneGap-Plugin/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-headsetdetection",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "Detect a wired or Bluetooth headset",
+  "homepage": "https://github.com/EddyVerbruggen/HeadsetDetection-PhoneGap-Plugin#readme",
+  "keywords": [
+    "cordova",
+    "bluetooth",
+    "headset",
+    "headset detection",
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-headsetdetection",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EddyVerbruggen/HeadsetDetection-PhoneGap-Plugin.git"
+  },
+  "version": "3.0.0"
+}

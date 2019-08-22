@@ -21,6 +21,9 @@
     },
     "cordova-plugin-network-information": {
       "PACKAGE_NAME": "zed.listen.quran.mueaqly"
+    },
+    "cordova-plugin-headsetdetection": {
+      "PACKAGE_NAME": "zed.listen.quran.mueaqly"
     }
   },
   "dependent_plugins": {

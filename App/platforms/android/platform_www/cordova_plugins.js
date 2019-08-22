@@ -260,6 +260,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "Connection"
       ]
+    },
+    {
+      "id": "cordova-plugin-headsetdetection.HeadsetDetection",
+      "file": "plugins/cordova-plugin-headsetdetection/www/HeadsetDetection.js",
+      "pluginId": "cordova-plugin-headsetdetection",
+      "clobbers": [
+        "window.HeadsetDetection"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -270,6 +278,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-badge": "0.8.8",
     "cordova-plugin-local-notification": "0.9.0-beta.2",
     "cordova-plugin-permission": "0.1.0",
-    "cordova-plugin-network-information": "2.0.2"
+    "cordova-plugin-network-information": "2.0.2",
+    "cordova-plugin-headsetdetection": "3.0.0"
   };
 });

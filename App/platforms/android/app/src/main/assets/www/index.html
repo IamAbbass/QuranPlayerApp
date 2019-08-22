@@ -58,8 +58,8 @@
               <p class="now_playing_name_en english_font gold"></p>
               <p class="now_playing_name_ar quran_font"></p>
               <img class="thumb_dp" src="img/bg-quran.png" alt="" />
-              <p class="audio_details">Translation Kanzul Eman with Tafseer e Khazain ul Irfan by Dawat e Islami</p>
-
+              <p class="audio_details">Qari Al Muaqali</p>
+              <p class="handset_details"></p>
               <p class="download_offline gold"></p>
             </div>
 
@@ -128,473 +128,588 @@
         <script>
 				var chapter       = "Surah # ";
 				var base_url      = "https://zedexperts.com/api/quran_pak/surah/";
+
 				var arr = [
 				{
 				  "index":"١",
-				  "name_arb":"فاتِحَةُ"
+				  "name_arb":"فاتِحَةُ",
+          "name_eng":"The Opening",
 				},
 				{
 				  "index":"٢",
-				  "name_arb":"البَقَرة"
+				  "name_arb":"البَقَرة",
+          "name_eng":"The Cow",
 				},
 				{
 				  "index":"٣",
-				  "name_arb":"آل عِمران"
+				  "name_arb":"آل عِمران",
+          "name_eng":"The Family of Imran",
 				},
 				{
 				  "index":"٤",
-				  "name_arb":"النِّســاء"
+				  "name_arb":"النِّســاء",
+          "name_eng":"The Women",
 				},
 				{
 				  "index":"٥",
-				  "name_arb":"المَـائِدة"
+				  "name_arb":"المَـائِدة",
+          "name_eng":"The Table spread with Food",
 				},
 				{
 				  "index":"٦",
-				  "name_arb":"الأنْعـام"
+				  "name_arb":"الأنْعـام",
+          "name_eng":"The Cattle",
 				},
 				{
 				  "index":"٧",
-				  "name_arb":"الأعراف"
+				  "name_arb":"الأعراف",
+          "name_eng":"The Heights",
 				},
 				{
 				  "index":"٨",
-				  "name_arb":"الأنْفـال"
+				  "name_arb":"الأنْفـال",
+          "name_eng":"The Spoils of War",
 				},
 				{
 				  "index":"٩",
-				  "name_arb":"التـَّوْبَة"
+				  "name_arb":"التـَّوْبَة",
+          "name_eng":"The Repentance",
 				},
 				{
 				  "index":"١٠",
-				  "name_arb":"يُونُس"
+				  "name_arb":"يُونُس",
+          "name_eng":"Yonus R.A",
 				},
 				{
 				  "index":"١١",
-				  "name_arb":"هُود"
+				  "name_arb":"هُود",
+          "name_eng":"Hud",
 				},
 				{
 				  "index":"١٢",
-				  "name_arb":"يُوسُف"
+				  "name_arb":"يُوسُف",
+          "name_eng":"Yusuf R.A",
 				},
 				{
 				  "index":"١٣",
-				  "name_arb":"الرَّعد"
+				  "name_arb":"الرَّعد",
+          "name_eng":"The Thunder",
 				},
 				{
 				  "index":"١٤",
-				  "name_arb":"اِبراهيم"
+				  "name_arb":"اِبراهيم",
+          "name_eng":"Abraham R.A",
 				},
 				{
 				  "index":"١٥",
-				  "name_arb":"الحِجْر"
+				  "name_arb":"الحِجْر",
+          "name_eng":"The Rocky Tract",
 				},
 				{
 				  "index":"١٦",
-				  "name_arb":"النًّحل"
+				  "name_arb":"النًّحل",
+          "name_eng":"The Bees",
 				},
 				{
 				  "index":"١٧",
-				  "name_arb": "بني إسرائيل"
+				  "name_arb": "بني إسرائيل",
+          "name_eng":"The Journey by Night",
 				},
 				{
 				  "index":"١٨",
-				  "name_arb":"الكَهْف"
+				  "name_arb":"الكَهْف",
+          "name_eng":"The Cave",
 				},
 				{
 				  "index":"١٩",
-				  "name_arb":"مَريَم"
+				  "name_arb":"مَريَم",
+          "name_eng":"Maryam R.A",
 				},
 				{
 				  "index":"٢٠",
-				  "name_arb":"طه"
+				  "name_arb":"طه",
+          "name_eng":"Ta-Ha",
 				},
 				{
 				  "index":"٢١",
-				  "name_arb":"الأنْبيآء"
+				  "name_arb":"الأنْبيآء",
+          "name_eng":"The Prophets",
 				},
 				{
 				  "index":"٢٢",
-				  "name_arb":"الحَجّ"
+				  "name_arb":"الحَجّ",
+          "name_eng":"The Pilgrimage",
 				},
 				{
 				  "index":"٢٣",
-				  "name_arb":"المؤمِنون"
+				  "name_arb":"المؤمِنون",
+          "name_eng":"The Believers",
 				},
 				{
 				  "index":"٢٤",
-				  "name_arb":"النّور"
+				  "name_arb":"النّور",
+          "name_eng":"The Light",
 				},
 				{
 				  "index":"٢٥",
-				  "name_arb":"الفُرقان"
+				  "name_arb":"الفُرقان",
+          "name_eng":"The Criterion",
 				},
 				{
 				  "index":"٢٦",
-				  "name_arb":"الشُّـعَراء"
+				  "name_arb":"الشُّـعَراء",
+          "name_eng":"The Poets",
 				},
 				{
 				  "index":"٢٧",
-				  "name_arb":"النَّـمْل"
+				  "name_arb":"النَّـمْل",
+          "name_eng":"The Ants",
 				},
 				{
 				  "index":"٢٨",
-				  "name_arb":"القَصَص"
+				  "name_arb":"القَصَص",
+          "name_eng":"The Narration",
 				},
 				{
 				  "index":"٢٩",
-				  "name_arb":"العَنْـكَبُوت"
+				  "name_arb":"العَنْـكَبُوت",
+          "name_eng":"The Spider",
 				},
 				{
 				  "index":"٣٠",
-				  "name_arb":"الرُّوم"
+				  "name_arb":"الرُّوم",
+          "name_eng":"The Romans",
 				},
 				{
 				  "index":"٣١",
-				  "name_arb":"لُقْمان"
+				  "name_arb":"لُقْمان",
+          "name_eng":"Luqman",
 				},
 				{
 				  "index":"٣٢",
-				  "name_arb":"السَّـجْدة"
+				  "name_arb":"السَّـجْدة",
+          "name_eng":"The Prostration",
 				},
 				{
 				  "index":"٣٣",
-				  "name_arb":"الأحزاب"
+				  "name_arb":"الأحزاب",
+          "name_eng":"The Confederates",
 				},
 				{
 				  "index":"٣٤",
-				  "name_arb":"ســَبَأ"
+				  "name_arb":"ســَبَأ",
+          "name_eng":"Sheba",
 				},
 				{
 				  "index":"٣٥",
-				  "name_arb":"فاطِر"
+				  "name_arb":"فاطِر",
+          "name_eng":"The Originator of Creation",
 				},
 				{
 				  "index":"٣٦",
-				  "name_arb":"يــس"
+				  "name_arb":"يــس",
+          "name_eng":"Ya-Sin",
 				},
 				{
 				  "index":"٣٧",
-				  "name_arb":"الصّــافّات"
+				  "name_arb":"الصّــافّات",
+          "name_eng":"Those Ranged in Ranks",
 				},
 				{
 				  "index":"٣٨",
-				  "name_arb":"ص"
+				  "name_arb":"ص",
+          "name_eng":"Sa'ad",
 				},
 				{
 				  "index":"٣٩",
-				  "name_arb":"الزُّمَر"
+				  "name_arb":"الزُّمَر",
+          "name_eng":"The Groups",
 				},
 				{
 				  "index":"٤٠",
-				  "name_arb":"المُؤْمِن"
+				  "name_arb":"المُؤْمِن",
+          "name_eng":"The Forgiver",
 				},
 				{
 				  "index":"٤١",
-				  "name_arb":"فُصِّلَت"
+				  "name_arb":"فُصِّلَت",
+          "name_eng":"They are explained in detail",
 				},
 				{
 				  "index":"٤٢",
-				  "name_arb":"الشُّوری"
+				  "name_arb":"الشُّوری",
+          "name_eng":"The Consultation",
 				},
 				{
 				  "index":"٤٣",
-				  "name_arb":"الزُّخْرُف"
+				  "name_arb":"الزُّخْرُف",
+          "name_eng":"The Gold Adornments",
 				},
 				{
 				  "index":"٤٤",
-				  "name_arb":"الدُّخان"
+				  "name_arb":"الدُّخان",
+          "name_eng":"The Smoke",
 				},
 				{
 				  "index":"٤٥",
-				  "name_arb":"الجاثِية"
+				  "name_arb":"الجاثِية",
+          "name_eng":"The Kneeling",
 				},
 				{
 				  "index":"٤٦",
-				  "name_arb":"الأحقاف"
+				  "name_arb":"الأحقاف",
+          "name_eng":"The Curved Sand-hills",
 				},
 				{
 				  "index":"٤٧",
-				  "name_arb":"مُحَمّد"
+				  "name_arb":"مُحَمّد",
+          "name_eng":"Muhammad",
 				},
 				{
 				  "index":"٤٨",
-				  "name_arb":"الفَتْح"
+				  "name_arb":"الفَتْح",
+          "name_eng":"The Victory",
 				},
 				{
 				  "index":"٤٩",
-				  "name_arb":"الحُجُرات"
+				  "name_arb":"الحُجُرات",
+          "name_eng":"The Dwellings",
 				},
 				{
 				  "index":"٥٠",
-				  "name_arb":"ق"
+				  "name_arb":"ق",
+          "name_eng":"Qaf",
 				},
 				{
 				  "index":"٥١",
-				  "name_arb":"الذ ّارِيات"
+				  "name_arb":"الذ ّارِيات",
+          "name_eng":"The Winds that Scatter",
 				},
 				{
 				  "index":"٥٢",
-				  "name_arb":"الطُّور"
+				  "name_arb":"الطُّور",
+          "name_eng":"The Mount",
 				},
 				{
 				  "index":"٥٣",
-				  "name_arb":"النَّجْم"
+				  "name_arb":"النَّجْم",
+          "name_eng":"The Star",
 				},
 				{
 				  "index":"٥٤",
-				  "name_arb":"القَمَر"
+				  "name_arb":"القَمَر",
+          "name_eng":"The Moon",
 				},
 				{
 				  "index":"٥٥",
-				  "name_arb":"الرَّحمن"
+				  "name_arb":"الرَّحمن",
+          "name_eng":"The Most Gracious",
 				},
 				{
 				  "index":"٥٦",
-				  "name_arb":"الواقِعَة"
+				  "name_arb":"الواقِعَة",
+          "name_eng":"The Event",
 				},
 				{
 				  "index":"٥٧",
-				  "name_arb":"الحَديد"
+				  "name_arb":"الحَديد",
+          "name_eng":"The Iron",
 				},
 				{
 				  "index":"٥٨",
-				  "name_arb":"المُجادَلة"
+				  "name_arb":"المُجادَلة",
+          "name_eng":"The Woman who disputes",
 				},
 				{
 				  "index":"٥٩",
-				  "name_arb":"الحَشْر"
+				  "name_arb":"الحَشْر",
+          "name_eng":"The Gathering",
 				},
 				{
 				  "index":"٦٠",
-				  "name_arb":"المُمتَحَنة"
+				  "name_arb":"المُمتَحَنة",
+          "name_eng":"The Woman to be examined",
 				},
 				{
 				  "index":"٦١",
-				  "name_arb":"الصَّف"
+				  "name_arb":"الصَّف",
+          "name_eng":"The Row",
 				},
 				{
 				  "index":"٦٢",
-				  "name_arb":"الجُّمُعة"
+				  "name_arb":"الجُّمُعة",
+          "name_eng":"Friday",
 				},
 				{
 				  "index":"٦٣",
-				  "name_arb":"المُنافِقُون"
+				  "name_arb":"المُنافِقُون",
+          "name_eng":"The Hypocrites",
 				},
 				{
 				  "index":"٦٤",
-				  "name_arb":"التَّغابُن"
+				  "name_arb":"التَّغابُن",
+          "name_eng":"Mutual Loss and Gain",
 				},
 				{
 				  "index":"٦٥",
-				  "name_arb":"الطَّلاق"
+				  "name_arb":"الطَّلاق",
+          "name_eng":"The Divorce",
 				},
 				{
 				  "index":"٦٦",
-				  "name_arb":"التَّحْريم"
+				  "name_arb":"التَّحْريم",
+          "name_eng":"The Prohibition",
 				},
 				{
 				  "index":"٦٧",
-				  "name_arb":"المُلْك"
+				  "name_arb":"المُلْك",
+          "name_eng":"Dominion",
 				},
 				{
 				  "index":"٦٨",
-				  "name_arb":"القَلـََم"
+				  "name_arb":"القَلـََم",
+          "name_eng":"The Pen",
 				},
 				{
 				  "index":"٦٩",
-				  "name_arb":"الحَاقّـَة"
+				  "name_arb":"الحَاقّـَة",
+          "name_eng":"The Inevitable",
 				},
 				{
 				  "index":"٧٠",
-				  "name_arb":"المَعارِج"
+				  "name_arb":"المَعارِج",
+          "name_eng":"The Ways of Ascent",
 				},
 				{
 				  "index":"٧١",
-				  "name_arb":"نُوح"
+				  "name_arb":"نُوح",
+          "name_eng":"Noah",
 				},
 				{
 				  "index":"٧٢",
-				  "name_arb":"الجِنّ"
+				  "name_arb":"الجِنّ",
+          "name_eng":"The Jinn",
 				},
 				{
 				  "index":"٧٣",
-				  "name_arb":"المُزَّمّـِل"
+				  "name_arb":"المُزَّمّـِل",
+          "name_eng":"The One wrapped in Garments",
 				},
 				{
 				  "index":"٧٤",
-				  "name_arb":"المُدَّثــِّر"
+				  "name_arb":"المُدَّثــِّر",
+          "name_eng":"The One Enveloped",
 				},
 				{
 				  "index":"٧٥",
-				  "name_arb":"القِيامَة"
+				  "name_arb":"القِيامَة",
+          "name_eng":"The Resurrection",
 				},
 				{
 				  "index":"٧٦",
-				  "name_arb":"الدَّهر"
+				  "name_arb":"الدَّهر",
+          "name_eng":"Man",
 				},
 				{
 				  "index":"٧٧",
-				  "name_arb":"المُرسَلات"
+				  "name_arb":"المُرسَلات",
+          "name_eng":"Those sent forth",
 				},
 				{
 				  "index":"٧٨",
-				  "name_arb":"النـَّبأ"
+				  "name_arb":"النـَّبأ",
+          "name_eng":"The Great News",
 				},
 				{
 				  "index":"٧٩",
-				  "name_arb":"النـّازِعات"
+				  "name_arb":"النـّازِعات",
+          "name_eng":"Those Who Pull Out",
 				},
 				{
 				  "index":"٨٠",
-				  "name_arb":"عَبَس"
+				  "name_arb":"عَبَس",
+          "name_eng":"He Frowned",
 				},
 				{
 				  "index":"٨١",
-				  "name_arb":"التـَّكْوير"
+				  "name_arb":"التـَّكْوير",
+          "name_eng":"Winding Round And Losing Its Light",
 				},
 				{
 				  "index":"٨٢",
-				  "name_arb":"الإنفِطار"
+				  "name_arb":"الإنفِطار",
+          "name_eng":"The Cleaving",
 				},
 				{
 				  "index":"٨٣",
-				  "name_arb":"المُطـَفِّفين"
+				  "name_arb":"المُطـَفِّفين",
+          "name_eng":"Those Who Deal In Fraud",
 				},
 				{
 				  "index":"٨٤",
-				  "name_arb":"الإنشِقاق"
+				  "name_arb":"الإنشِقاق",
+          "name_eng":"The Splitting Asunder",
 				},
 				{
 				  "index":"٨٥",
-				  "name_arb":"البُروج"
+				  "name_arb":"البُروج",
+          "name_eng":"The Big Stars",
 				},
 				{
 				  "index":"٨٦",
-				  "name_arb":"الطّارق"
+				  "name_arb":"الطّارق",
+          "name_eng":"The Night Comer",
 				},
 				{
 				  "index":"٨٧",
-				  "name_arb":"الأعلی"
+				  "name_arb":"الأعلی",
+          "name_eng":"The Most High",
 				},
 				{
 				  "index":"٨٨",
-				  "name_arb":"الغاشِيَة"
+				  "name_arb":"الغاشِيَة",
+          "name_eng":"The Overwhelming",
 				},
 				{
 				  "index":"٨٩",
-				  "name_arb":"الفَجْر"
+				  "name_arb":"الفَجْر",
+          "name_eng":"The Break of Day",
 				},
 				{
 				  "index":"٩٠",
-				  "name_arb":"البَـلـَد"
+				  "name_arb":"البَـلـَد",
+          "name_eng":"(The City",
 				},
 				{
 				  "index":"٩١",
-				  "name_arb":"الشــَّمْس"
+				  "name_arb":"الشــَّمْس",
+          "name_eng":"The Sun",
 				},
 				{
 				  "index":"٩٢",
-				  "name_arb":"اللـَّيل"
+				  "name_arb":"اللـَّيل",
+          "name_eng":"The Night",
 				},
 				{
 				  "index":"٩٣",
-				  "name_arb":"الضُّحی"
+				  "name_arb":"الضُّحی",
+          "name_eng":"The Forenoon - After Sunrise",
 				},
 				{
 				  "index":"٩٤",
-				  "name_arb":"الإنشـِراح"
+				  "name_arb":"الإنشـِراح",
+          "name_eng":"The Opening Forth",
 				},
 				{
 				  "index":"٩٥",
-				  "name_arb":"التـِّين"
+				  "name_arb":"التـِّين",
+          "name_eng":"The Fig",
 				},
 				{
 				  "index":"٩٦",
-				  "name_arb":"العَلـَق"
+				  "name_arb":"العَلـَق",
+          "name_eng":"The Clot",
 				},
 				{
 				  "index":"٩٧",
-				  "name_arb":"القـَدر"
+				  "name_arb":"القـَدر",
+          "name_eng":"The Night of Decree",
 				},
 				{
 				  "index":"٩٨",
-				  "name_arb":"البَيِّنَة"
+				  "name_arb":"البَيِّنَة",
+          "name_eng":"The Clear Evidence",
 				},
 				{
 				  "index":"٩٩",
-				  "name_arb":"الزِّلزال"
+				  "name_arb":"الزِّلزال",
+          "name_eng":"The Earthquake",
 				},
 				{
 				  "index":"١٠٠",
-				  "name_arb":"العـَاديات"
+				  "name_arb":"العـَاديات",
+          "name_eng":"Those That Run",
 				},
 				{
 				  "index":"١٠١",
-				  "name_arb":"القارِعَة"
+				  "name_arb":"القارِعَة",
+          "name_eng":"The Striking Hour",
 				},
 				{
 				  "index":"١٠٢",
-				  "name_arb":"التَكاثـُر"
+				  "name_arb":"التَكاثـُر",
+          "name_eng":"The Piling Up - The Emulous Desire",
 				},
 				{
 				  "index":"١٠٣",
-				  "name_arb":"العَصْر"
+				  "name_arb":"العَصْر",
+          "name_eng":"The Time",
 				},
 				{
 				  "index":"١٠٤",
-				  "name_arb":"الهُمَزَة"
+				  "name_arb":"الهُمَزَة",
+          "name_eng":"The Slanderer",
 				},
 				{
 				  "index":"١٠٩",
-				  "name_arb":"الفيل"
+				  "name_arb":"الفيل",
+          "name_eng":"The Elephant",
 				},
 				{
 				  "index":"١٠٦",
-				  "name_arb":"قـُرَيْش"
+				  "name_arb":"قـُرَيْش",
+          "name_eng":"Quraish",
 				},
 				{
 				  "index":"١٠٧",
-				  "name_arb":"الماعُون"
+				  "name_arb":"الماعُون",
+          "name_eng":"The Small Kindness",
 				},
 				{
 				  "index":"١٠٨",
-				  "name_arb":"الكـَوْثَر"
+				  "name_arb":"الكـَوْثَر",
+          "name_eng":"A River In Paradise",
 				},
 				{
 				  "index":"١٠٩",
-				  "name_arb":"الكافِرون"
+				  "name_arb":"الكافِرون",
+          "name_eng":"The Disbelievers",
 				},
 				{
 				  "index":"١١٠",
-				  "name_arb":"النـَّصر"
+				  "name_arb":"النـَّصر",
+          "name_eng":"The Help",
 				},
 				{
 				  "index":"١١١",
-				  "name_arb":"تَبَّت"
+				  "name_arb":"تَبَّت",
+          "name_eng":"The Palm Fiber",
 				},
 				{
 				  "index":"١١٢",
-				  "name_arb":"الإخـْلاص"
+				  "name_arb":"الإخـْلاص",
+          "name_eng":"The Purity",
 				},
 				{
 				  "index":"١١٣",
-				  "name_arb":"الفـَلَق"
+				  "name_arb":"الفـَلَق",
+          "name_eng":"The Daybreak",
 				},
 				{
 				  "index":"١١٤",
-				  "name_arb":"النـَّاس"
+				  "name_arb":"النـَّاس",
+          "name_eng":"Mankind",
 				}];
 
 
-            
-			
+
+
           $(document).ready(function(){
 
             $("#para_list").append('<li class="download_all list-group-item">'+
             '<span class="para_play"><img src="img/download.png" alt="" /></span>'+
             '<span class="para_index english_font gold">Download <span class="count_download_files">All</span> Files</span>'+
-            '<span class="download_help english_font gold">and, listen Quran when you are offline</span>'+
+            '<span class="download_help english_font gold">or, listen Quran online, without downloading</span>'+
             '<div class="clear"></div>'+
             '</li>');
 
