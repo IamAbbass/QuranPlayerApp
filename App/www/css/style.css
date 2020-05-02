@@ -466,9 +466,20 @@ form {
 }
 .audio_details {
     text-align: center;
-    font-size: 14px;
-    margin: 5px 0;
-    opacity: 0.25;
+    font-size: 12px;
+    margin: 10px;
+    opacity: 0.9;
+}
+.audio_details span{
+  border: 1px solid #fff;
+  padding: 5px;
+  border-radius: 5px;
+  display: block;
+  margin-bottom:2px;
+}
+.audio_details span.selected{
+  background: #fff;
+    color: #000;
 }
 .handset_details{
   text-align: center;

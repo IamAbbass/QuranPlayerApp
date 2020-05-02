@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="zed.listen.quran.mueaqly" version="6.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Listen Quran - Qari Maher Al Mueaqly</name>
+<widget id="zed.listen.quran.mueaqly" version="7.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Listen Quran - Zed Developers</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>

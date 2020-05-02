@@ -6,6 +6,10 @@ var app = {
         this.receivedEvent('deviceready');
 
 
+        if(localStorage.getItem("selected_qari") == null){
+          localStorage.setItem("selected_qari","muaqali");
+        }
+        var selected_qari = localStorage.getItem("selected_qari");
 
         try{
           window.HeadsetDetection.registerRemoteEvents(function(status) {
@@ -22,9 +26,10 @@ var app = {
           $(".handset_details").text("🎧 Sounds best with headphone !");
         }
 
-
         //localStorage.clear();
         $(document).ready(function(){
+
+          $(".audio_details span[qari='"+selected_qari+"']").addClass('selected');
 
           $(".para_view").show();
 
@@ -36,7 +41,12 @@ var app = {
           var count_download_files = 0;
 
           function check_downloaded(index){
-            var downloaded = localStorage.getItem("downloaded_"+index);
+
+            if(selected_qari == 'muaqali'){
+              var downloaded = localStorage.getItem("downloaded_"+index);
+            }else if(selected_qari == 'sudais'){
+              var downloaded = localStorage.getItem("downloaded_sudais_"+index);
+            }
             if(downloaded == null || downloaded == "null"){
               return false;
             }else{
@@ -119,7 +129,6 @@ var app = {
             }
           }
           function play_now(base_url,audio_number,arr,seek,start){
-
             audio_player.volume = 1;
             global_audio = audio_number;
             display_saved_notes(global_audio);
@@ -130,7 +139,6 @@ var app = {
             $(".now_playing_name_en, .bottom_name_en").html(chapter+" "+(global_audio)+" "+thumb_title.name_eng);
             $(".now_playing_name_ar, .bottom_name_ar").html(thumb_title.name_arb);
 
-
             if(check_downloaded(audio_number) == true){
               var url = localStorage.getItem("downloaded_"+audio_number);
               $(".download_offline").hide();
@@ -140,7 +148,14 @@ var app = {
             }
 
             //console.log({url});
-            audio_player.src = url;
+            if(selected_qari == 'muaqali'){
+              audio_player.src = url;
+            }else if(selected_qari == 'sudais'){
+              if(audio_number < 10){audio_number = "00"+audio_number;}
+              else if(audio_number < 100){audio_number = "0"+audio_number;}
+              audio_player.src = base_url+"sudais/"+audio_number+".mp3";
+            }
+
             audio_player.pause();
             audio_player.load();
             audio_player.currentTime = seek;
@@ -191,20 +206,38 @@ var app = {
                     $(".download_offline").html('<img src="img/load.gif" alt=""/> Downloading ..').show();
                   }
 
-                  var assetURL = base_url+audio_number+".mp3";
+                  if(selected_qari == 'muaqali'){
+                    var assetURL = base_url+audio_number+".mp3";
+                  }else if(selected_qari == 'sudais'){
+                    if(audio_number < 10){audio_number = "00"+audio_number;}
+                    else if(audio_number < 100){audio_number = "0"+audio_number;}
+                    var assetURL = base_url+"sudais/"+audio_number+".mp3";
+                  }
+
                   //console.log({assetURL});
                   var store = cordova.file.externalRootDirectory;
                   //var store = cordova.file.externalApplicationStorageDirectory;
                   // output in android: file:///storage/emulated/0/
                   // or
                   // var store = "cdvfile://localhost/persistent/";
-                  var fileName = "Quran_App_Data/Surah/"+audio_number+".mp3";
+
+                  if(selected_qari == 'muaqali'){
+                    var fileName = "Quran_App_Data/Surah/"+audio_number+".mp3";
+                  }else if(selected_qari == 'sudais'){
+                    var fileName = "Quran_App_Data/Surah/Sudais/"+audio_number+".mp3";
+                  }
+
                   var fileTransfer = new FileTransfer();
                   fileTransfer.download(assetURL, store + fileName,
                   function(entry) {
                       //SUCCESS
                       downloading_arr.splice($.inArray(audio_number,downloading_arr),1);
-                      localStorage.setItem("downloaded_"+audio_number,"file:///storage/emulated/0/"+fileName);
+                      if(selected_qari == 'muaqali'){
+                        localStorage.setItem("downloaded_"+audio_number,"file:///storage/emulated/0/"+fileName);
+                      }else if(selected_qari == 'sudais'){
+                        localStorage.setItem("downloaded_sudais_"+audio_number,"file:///storage/emulated/0/"+fileName);
+                      }
+
                       $(".para_li[key='"+audio_number+"']").find(".para_index").html(audio_number+' <span class="label label-success">Offline</span>');
                       $(".para_li[key='"+audio_number+"']").find(".progress-download").fadeOut(2000);
                       if(global_audio == audio_number){
@@ -353,7 +386,7 @@ var app = {
           }
           function display_download_all_button(){
 			count_download_files = 0;
-			
+
             $(".download_all").hide();
             for(i=1; i<=total_audio; i++){
               if(check_downloaded(i) == false){
@@ -858,7 +891,22 @@ var app = {
             }
           }, false);
 
+          $(".audio_details span").click(function(){
+            $(".audio_details span").removeClass("selected");
+            $(this).addClass("selected");
+
+            var qari = $(this).attr('qari');
+
+            //Local Storate
+            localStorage.setItem("selected_qari",qari);
+            selected_qari = qari;
+
+            play_now(base_url,global_audio,arr,0,true);
+          });
+
         });
+
+
 
 
     },
